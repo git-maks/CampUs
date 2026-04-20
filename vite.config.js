@@ -6,7 +6,10 @@ const repository = process.env.GITHUB_REPOSITORY ?? ''
 const repoName = repository.split('/')[1] ?? ''
 const isUserOrOrgPages = repoName.endsWith('.github.io')
 const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
-const pagesBase = isGitHubActions && repoName && !isUserOrOrgPages ? `/${repoName}/` : '/'
+// Use repo subpath when building on GitHub Actions for project pages.
+// Default to a relative base (./) so built assets load correctly when
+// deployed under a subpath or served from the filesystem/static server.
+const pagesBase = isGitHubActions && repoName && !isUserOrOrgPages ? `/${repoName}/` : './'
 
 export default defineConfig({
   base: pagesBase,
