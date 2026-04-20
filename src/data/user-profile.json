@@ -1,0 +1,15 @@
+{
+  "name": "Alex",
+  "surname": "Erasmus",
+  "language": "en",
+  "currency_default": "PLN",
+  "currency_secondary": "EUR",
+  "exchange_rate": 4.31,
+  "linked_wallets": [
+    {
+      "vendor": "Żabka",
+      "status": "Verified",
+      "balance_points": 450
+    }
+  ]
+}

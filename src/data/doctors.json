@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Kowalski",
+    "specialty": "General Practitioner",
+    "languages": ["English", "Polish"],
+    "image": "/src/assets/images/doctors/doc1.jpg"
+  }
+]

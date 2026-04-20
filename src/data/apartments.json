@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Cozy Studio near Campus",
+    "type": "Standalone",
+    "price_pln": 2200,
+    "price_eur": 510,
+    "verified": true,
+    "image": "/src/assets/images/apartments/studio.jpg",
+    "description": "A nice and affordable studio apartment close to Lublin University of Technology."
+  },
+  {
+    "id": 2,
+    "title": "Shared Apartment for 3",
+    "type": "Group",
+    "price_pln": 1500,
+    "price_eur": 350,
+    "verified": false,
+    "image": "/src/assets/images/apartments/shared.jpg",
+    "description": "Looking for 2 more roommates to share this 3-bedroom apartment."
+  }
+]

@@ -1,0 +1,52 @@
+import React, { useState } from 'react';
+import Header from '../components/Header';
+import MenuDrawer from '../components/MenuDrawer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileLines, faBuilding, faUserCheck, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
+export default function Bureaucracy() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const guides = [
+    { title: 'Register Residence (PESEL)', icon: faFileLines, desc: 'How to register your temporary address in Poland.' },
+    { title: 'Bank Account Setup', icon: faBuilding, desc: 'Top student accounts with zero fees and dual currencies.' },
+    { title: 'Student ID Card System', icon: faUserCheck, desc: 'Access 50% transport discounts with your student card.' },
+  ];
+
+  return (
+    <div className="app-shell">
+      <Header toggleMenu={() => setDrawerOpen(!drawerOpen)} />
+      <MenuDrawer open={drawerOpen} close={() => setDrawerOpen(false)} />
+
+      <main className="page-main space-y-4">
+        <h1 className="section-title flex items-center gap-2">
+          <FontAwesomeIcon icon={faFileLines} className="text-base text-blue-200" />
+          Bureaucracy
+        </h1>
+        <p className="section-subtitle">Guides and mock forms to simplify first-week administration.</p>
+
+        <div className="grid gap-4">
+          {guides.map((guide, i) => (
+            <article key={i} className="glass-panel group relative overflow-hidden p-5">
+              <div className="absolute -right-5 -top-4 h-20 w-20 rounded-full bg-white/18 blur-2xl transition group-hover:scale-110" />
+
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white/85">
+                <FontAwesomeIcon icon={guide.icon} className="text-sm" />
+              </div>
+
+              <h3 className="mt-3 text-[1.2rem] font-semibold leading-tight tracking-tight text-white">{guide.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/72">{guide.desc}</p>
+
+              <button className="ghost-pill mt-4 px-4 py-2 text-sm">
+                <span className="inline-flex items-center gap-2">
+                  Read Guide
+                  <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
+                </span>
+              </button>
+            </article>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome Party at Club 30",
+    "date": "2026-09-02T22:00:00",
+    "type": "Party",
+    "location": "Club 30, Lublin"
+  },
+  {
+    "id": 2,
+    "title": "Library Orientation",
+    "date": "2026-09-04T10:00:00",
+    "type": "Event",
+    "location": "LUT Main Library"
+  }
+]

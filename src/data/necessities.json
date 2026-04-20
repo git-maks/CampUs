@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Żabka Studentska",
+    "type": "Grocery",
+    "discount": "10% off for students",
+    "logo": "/src/assets/images/store-logos/zabka.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Biedronka Center",
+    "type": "Grocery",
+    "discount": "Deals inside app",
+    "logo": "/src/assets/images/store-logos/biedronka.jpg"
+  }
+]
