@@ -27,3 +27,15 @@ It's just standard Vite React!
 
 ## Development info
 Created automatically with Vite, React, Tailwind, and React Router.
+
+## GitHub Pages Hosting (GitHub Actions)
+This project is configured for automatic GitHub Pages deployment via workflow:
+- Workflow file: `.github/workflows/deploy-pages.yml`
+- Trigger: push to `main` (or manual run)
+
+Required one-time repository setup:
+1. Go to your repository `Settings` > `Pages`.
+2. In `Build and deployment`, set `Source` to `GitHub Actions`.
+3. Push to `main`.
+
+After the workflow completes, your app will be published to GitHub Pages.
