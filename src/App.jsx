@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainDashboard from './pages/MainDashboard';
 import Login from './pages/Login';
 import Housing from './pages/Housing';
@@ -10,8 +10,10 @@ import Necessities from './pages/Necessities';
 import Logistics from './pages/Logistics';
 
 function App() {
+  const routerBase = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+
   return (
-    <Router>
+    <Router basename={routerBase}>
       <div className="min-h-screen pb-20">
         <Routes>
           <Route path="/" element={<Login />} />
@@ -22,6 +24,7 @@ function App() {
           <Route path="/calendar" element={<SocialCalendar />} />
           <Route path="/necessities" element={<Necessities />} />
           <Route path="/logistics" element={<Logistics />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>
