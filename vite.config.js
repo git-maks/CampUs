@@ -18,7 +18,7 @@ export default defineConfig({
         name: 'CampUs App',
         short_name: 'CampUs',
         description: 'All-in-one PWA for Erasmus students in Poland',
-        theme_color: '#ffffff',
+        theme_color: '#ad015f',
         start_url: pagesBase,
         scope: pagesBase,
         icons: [

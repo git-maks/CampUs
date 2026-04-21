@@ -20,7 +20,7 @@ export default function Bureaucracy() {
 
       <main className="page-main space-y-4">
         <h1 className="section-title flex items-center gap-2">
-          <FontAwesomeIcon icon={faFileLines} className="text-base text-blue-200" />
+          <FontAwesomeIcon icon={faFileLines} className="accent-text text-base" />
           Bureaucracy
         </h1>
         <p className="section-subtitle">Guides and mock forms to simplify first-week administration.</p>

@@ -19,7 +19,7 @@ export default function Logistics() {
 
       <main className="page-main space-y-4">
         <h1 className="section-title flex items-center gap-2">
-          <FontAwesomeIcon icon={faBus} className="text-base text-blue-200" />
+          <FontAwesomeIcon icon={faBus} className="accent-text text-base" />
           Logistics
         </h1>
         <p className="section-subtitle">SIM cards and transport products for your first days in Lublin.</p>
@@ -30,20 +30,20 @@ export default function Logistics() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="single-line inline-flex max-w-[210px] items-center gap-2 text-[1.2rem] font-semibold leading-tight tracking-tight text-white">
-                    <FontAwesomeIcon icon={opt.title.includes('Bus') ? faBus : faSimCard} className="text-sm text-blue-200" />
+                    <FontAwesomeIcon icon={opt.title.includes('Bus') ? faBus : faSimCard} className="accent-text text-sm" />
                     {opt.title}
                   </h3>
                   <p className="mt-1 text-sm text-white/72">{opt.desc}</p>
                 </div>
 
-                <span className="inline-flex items-center gap-1 rounded-full border border-blue-200/35 bg-blue-200/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-100">
+                <span className="accent-chip inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider">
                   <FontAwesomeIcon icon={faBolt} className="text-[0.62rem]" />
                   instant
                 </span>
               </div>
 
               <div className="mt-4 flex items-center justify-between">
-                <span className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-blue-100">
+                <span className="accent-text-strong inline-flex items-center gap-2 text-2xl font-bold tracking-tight">
                   <FontAwesomeIcon icon={faTag} className="text-sm" />
                   {opt.price}
                 </span>

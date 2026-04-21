@@ -23,7 +23,7 @@ export default function Healthcare() {
 
       <main className="page-main space-y-4">
         <h1 className="section-title flex items-center gap-2">
-          <FontAwesomeIcon icon={faHeartPulse} className="text-base text-blue-200" />
+          <FontAwesomeIcon icon={faHeartPulse} className="accent-text text-base" />
           Healthcare
         </h1>
         <p className="section-subtitle">English-friendly doctors and nearby clinics for Erasmus students.</p>
@@ -34,7 +34,7 @@ export default function Healthcare() {
             Emergency
           </p>
           <p className="mt-1 inline-flex items-center gap-2 text-2xl font-semibold tracking-tight text-white">
-            <FontAwesomeIcon icon={faPhone} className="text-lg text-emerald-200" />
+            <FontAwesomeIcon icon={faPhone} className="accent-text text-lg" />
             Call 112 for urgent help
           </p>
         </article>
@@ -49,7 +49,7 @@ export default function Healthcare() {
 
                 <div className="flex flex-col">
                   <h3 className="text-xl font-semibold tracking-tight text-white">{doc.name}</h3>
-                  <p className="text-sm text-blue-200">{doc.specialty}</p>
+                  <p className="accent-text text-sm">{doc.specialty}</p>
                 </div>
               </div>
 

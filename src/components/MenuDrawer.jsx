@@ -9,6 +9,7 @@ import {
   faCalendarDays,
   faBasketShopping,
   faBus,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function MenuDrawer({ open, close }) {
@@ -20,6 +21,7 @@ export default function MenuDrawer({ open, close }) {
     { to: '/calendar', title: 'Social Calendar', icon: faCalendarDays },
     { to: '/necessities', title: 'Necessities', icon: faBasketShopping },
     { to: '/logistics', title: 'Logistics', icon: faBus },
+    { to: '/profile', title: 'Profile Settings', icon: faUser },
   ];
 
   return (
@@ -30,10 +32,10 @@ export default function MenuDrawer({ open, close }) {
       />
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-[82%] max-w-xs border-r border-white/15 bg-[#0c1835]/85 p-5 shadow-2xl backdrop-blur-2xl transition-transform ${open ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed inset-y-0 left-0 z-50 w-[82%] max-w-xs border-r border-white/15 bg-[#191330]/88 p-5 shadow-2xl backdrop-blur-2xl transition-transform ${open ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className="mb-6 mt-2">
-          <p className="text-xs uppercase tracking-[0.25em] text-white/55">CampUs</p>
+          <p className="accent-text text-xs uppercase tracking-[0.25em]">CampUs</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">All Modules</h2>
         </div>
 
@@ -46,7 +48,7 @@ export default function MenuDrawer({ open, close }) {
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-2xl border px-3 py-3 transition ${
                   isActive
-                    ? 'border-white/30 bg-white/16 text-white'
+                    ? 'accent-chip text-white'
                     : 'border-white/10 bg-white/5 text-white/78 hover:bg-white/10'
                 }`
               }

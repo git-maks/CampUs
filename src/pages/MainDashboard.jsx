@@ -39,7 +39,7 @@ export default function MainDashboard() {
         <section className="glass-panel p-4">
           <p className="text-sm text-white/70">Hey Alex</p>
           <h2 className="section-title flex items-center gap-2">
-            <FontAwesomeIcon icon={faTicket} className="text-base text-blue-200" />
+            <FontAwesomeIcon icon={faTicket} className="accent-text text-base" />
             Best Coupons
           </h2>
 
@@ -51,7 +51,7 @@ export default function MainDashboard() {
             >
               {necessitiesDocs.map((vendor) => (
                 <article key={vendor.id} className="min-w-[228px] snap-start rounded-2xl border border-white/15 bg-white/5 p-3">
-                  <div className="relative mb-3 h-24 overflow-hidden rounded-2xl border border-white/14 bg-gradient-to-br from-[#6a9dff]/30 to-[#8474ff]/20">
+                  <div className="relative mb-3 h-24 overflow-hidden rounded-2xl border border-white/14 bg-gradient-to-br from-[#ad015f]/34 to-[#ad015f]/10">
                     <div className="absolute -right-4 -top-6 h-16 w-16 rounded-full bg-white/25 blur-xl" />
                     <div className="absolute inset-0 flex items-center justify-between px-3">
                       <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/35 bg-white/15 text-sm font-bold text-white">
@@ -65,7 +65,7 @@ export default function MainDashboard() {
                   </div>
 
                   <h3 className="single-line text-lg font-semibold tracking-tight text-white">{vendor.name}</h3>
-                  <p className="single-line mt-1 text-sm font-medium text-emerald-300">{vendor.discount}</p>
+                  <p className="accent-text single-line mt-1 text-sm font-medium">{vendor.discount}</p>
                 </article>
               ))}
             </CustomScrollbar>
@@ -74,23 +74,23 @@ export default function MainDashboard() {
 
         <section className="glass-panel p-4">
           <h2 className="section-title flex items-center gap-2">
-            <FontAwesomeIcon icon={faLink} className="text-base text-emerald-200" />
+            <FontAwesomeIcon icon={faLink} className="accent-text text-base" />
             Vendor Wallet
           </h2>
 
-          <div className="rounded-2xl border border-emerald-200/35 bg-emerald-300/10 p-4">
+          <div className="accent-border rounded-2xl border bg-[rgba(173,1,95,0.18)] p-4">
             <div className="flex items-end justify-between gap-3">
               <div className="min-w-0">
-                <p className="single-line text-[1.9rem] font-semibold tracking-tight text-emerald-100">Zabka Connected</p>
-                <p className="inline-flex items-center gap-1 text-sm text-emerald-100/85">
+                <p className="accent-text-strong single-line text-[1.9rem] font-semibold tracking-tight">Zabka Connected</p>
+                <p className="accent-text inline-flex items-center gap-1 text-sm">
                   <FontAwesomeIcon icon={faCircleCheck} className="text-[0.7rem]" />
                   Verified
                 </p>
               </div>
 
               <div className="shrink-0 text-right">
-                <p className="text-3xl font-bold leading-none text-emerald-100">450</p>
-                <p className="single-line inline-flex items-center gap-1 text-xs uppercase tracking-wider text-emerald-100/70">
+                <p className="accent-text-strong text-3xl font-bold leading-none">450</p>
+                <p className="accent-text single-line inline-flex items-center gap-1 text-xs uppercase tracking-wider">
                   <FontAwesomeIcon icon={faCoins} className="text-[0.65rem]" />
                   Points
                 </p>
@@ -101,7 +101,7 @@ export default function MainDashboard() {
 
         <section>
           <h2 className="section-title flex items-center gap-2">
-            <FontAwesomeIcon icon={faCalendarDays} className="text-base text-blue-200" />
+            <FontAwesomeIcon icon={faCalendarDays} className="accent-text text-base" />
             Community Calendar
           </h2>
 
@@ -109,7 +109,7 @@ export default function MainDashboard() {
             {calendarDocs.map((event) => (
               <article key={event.id} className="glass-panel p-4">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-blue-200">
+                  <span className="accent-text inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider">
                     <FontAwesomeIcon icon={faCalendarDays} className="text-[0.65rem]" />
                     {event.type}
                   </span>
@@ -121,7 +121,7 @@ export default function MainDashboard() {
 
                 <h3 className="text-lg font-semibold tracking-tight text-white">{event.title}</h3>
                 <p className="single-line mt-1 inline-flex items-center gap-2 text-sm text-white/75">
-                  <FontAwesomeIcon icon={faLocationDot} className="text-xs text-blue-200" />
+                  <FontAwesomeIcon icon={faLocationDot} className="accent-text text-xs" />
                   {new Date(event.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })} at {event.location}
                 </p>
               </article>

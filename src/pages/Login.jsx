@@ -20,7 +20,7 @@ export default function Login() {
     <div className="app-shell px-4 py-8">
       <div className="flex min-h-[86vh] flex-col justify-center gap-5">
         <section className="glass-panel p-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">CampUs PWA</p>
+          <p className="accent-text text-xs uppercase tracking-[0.3em]">CampUs PWA</p>
           <h1 className="mt-2 text-[2.1rem] font-semibold leading-tight tracking-tight text-white">
             Move to Poland with confidence.
           </h1>
@@ -31,7 +31,7 @@ export default function Login() {
           <div className="mt-4 rounded-2xl border border-white/20 bg-white/8 px-4 py-3">
             <div className="flex items-center justify-between text-sm">
               <span className="text-white/70">Dual currency mode</span>
-              <span className="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+              <span className="accent-chip-soft rounded-full px-3 py-1 text-xs font-semibold">
                 {currency} + {secondaryCurrency}
               </span>
             </div>

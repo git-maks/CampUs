@@ -8,10 +8,10 @@ import { faBasketShopping, faScissors, faMusic, faUtensils, faStore, faTag } fro
 export default function Necessities() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const typeAccent = {
-    Grocery: 'from-emerald-300/35 to-emerald-200/8',
-    Barber: 'from-blue-300/35 to-blue-200/8',
-    Club: 'from-fuchsia-300/35 to-fuchsia-200/8',
-    Restaurant: 'from-amber-300/35 to-amber-200/8',
+    Grocery: 'from-[#ad015f]/36 to-[#ad015f]/10',
+    Barber: 'from-[#c00f6c]/36 to-[#ad015f]/10',
+    Club: 'from-[#d72583]/38 to-[#ad015f]/12',
+    Restaurant: 'from-[#b20f66]/34 to-[#ad015f]/10',
   };
   const typeIcons = {
     Grocery: faBasketShopping,
@@ -27,7 +27,7 @@ export default function Necessities() {
 
       <main className="page-main space-y-4">
         <h1 className="section-title flex items-center gap-2">
-          <FontAwesomeIcon icon={faBasketShopping} className="text-base text-blue-200" />
+          <FontAwesomeIcon icon={faBasketShopping} className="accent-text text-base" />
           Necessities
         </h1>
         <p className="section-subtitle">Groceries, clubs, barbers, and daily essentials around campus.</p>
@@ -45,8 +45,8 @@ export default function Necessities() {
               </div>
 
               <h3 className="single-line text-sm font-semibold leading-tight text-white">{item.name}</h3>
-              <span className="single-line mt-1 text-[0.65rem] font-semibold uppercase tracking-wider text-blue-200">{item.type}</span>
-              <p className="single-line mt-2 inline-flex max-w-full items-center gap-1 rounded-full border border-emerald-200/35 bg-emerald-200/15 px-2 py-1 text-xs font-medium text-emerald-100">
+              <span className="accent-text single-line mt-1 text-[0.65rem] font-semibold uppercase tracking-wider">{item.type}</span>
+              <p className="accent-chip-soft single-line mt-2 inline-flex max-w-full items-center gap-1 rounded-full px-2 py-1 text-xs font-medium">
                 <FontAwesomeIcon icon={faTag} className="text-[0.62rem]" />
                 {item.discount}
               </p>

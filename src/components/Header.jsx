@@ -16,10 +16,10 @@ export default function Header({ toggleMenu }) {
         </button>
 
         <h1 className="text-[1.9rem] font-semibold leading-none tracking-tight">
-          <span className="bg-gradient-to-r from-[#9ec2ff] to-[#d0b8ff] bg-clip-text text-transparent">CampUs</span>
+          <span className="accent-title-gradient">CampUs</span>
         </h1>
 
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-200/30 bg-blue-200/25 text-blue-100">
+        <div className="accent-icon-wrap flex h-11 w-11 items-center justify-center rounded-2xl">
           <FontAwesomeIcon icon={faUser} className="text-base" />
         </div>
       </div>

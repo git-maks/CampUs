@@ -6,6 +6,15 @@
   --bg-1: #1b1b49;
   --bg-2: #111938;
   --bg-3: #0b1329;
+  --accent: #ad015f;
+  --accent-strong: #86004a;
+  --accent-bright: #d21f7a;
+  --accent-soft: rgba(173, 1, 95, 0.2);
+  --accent-soft-strong: rgba(173, 1, 95, 0.32);
+  --accent-border: rgba(255, 165, 214, 0.45);
+  --accent-shadow: rgba(173, 1, 95, 0.36);
+  --accent-text: #ffc9e5;
+  --accent-text-strong: #ffe5f3;
   --text-primary: #edf1ff;
   --text-secondary: rgba(237, 241, 255, 0.74);
   --glass-bg-strong: rgba(255, 255, 255, 0.16);
@@ -16,7 +25,7 @@
 * {
   box-sizing: border-box;
   scrollbar-width: thin;
-  scrollbar-color: rgba(167, 197, 255, 0.72) rgba(255, 255, 255, 0.1);
+  scrollbar-color: rgba(245, 168, 214, 0.85) rgba(255, 255, 255, 0.1);
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -71,7 +80,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(169, 200, 255, 0.92) 0%, rgba(132, 142, 255, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(255, 197, 229, 0.95) 0%, rgba(213, 37, 123, 0.95) 100%);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -89,11 +98,11 @@
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(190, 214, 255, 0.96) 0%, rgba(156, 165, 255, 0.96) 100%);
+  background: linear-gradient(180deg, rgba(255, 215, 239, 0.97) 0%, rgba(228, 64, 146, 0.97) 100%);
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(180deg, rgba(208, 226, 255, 0.98) 0%, rgba(171, 177, 255, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(255, 229, 245, 0.98) 0%, rgba(186, 20, 102, 0.98) 100%);
 }
 
 *::-webkit-scrollbar-corner {
@@ -159,17 +168,27 @@ body,
   }
 
   .frosted-input:focus {
-    border-color: rgba(138, 191, 255, 0.85);
-    box-shadow: 0 0 0 3px rgba(138, 191, 255, 0.2);
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 3px rgba(173, 1, 95, 0.24);
   }
 
   .primary-pill {
-    border: 1px solid rgba(255, 255, 255, 0.24);
+    border: 1px solid var(--accent-border);
     border-radius: 14px;
-    background: linear-gradient(135deg, #6ea7ff 0%, #8f81ff 100%);
+    background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-strong) 100%);
     color: #fff;
     font-weight: 600;
-    box-shadow: 0 12px 24px rgba(98, 107, 255, 0.35);
+    box-shadow: 0 12px 24px var(--accent-shadow);
+    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+  }
+
+  .primary-pill:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 14px 28px rgba(173, 1, 95, 0.44);
+  }
+
+  .primary-pill:active {
+    transform: translateY(1px);
   }
 
   .ghost-pill {
@@ -178,6 +197,49 @@ body,
     background: rgba(255, 255, 255, 0.08);
     color: var(--text-primary);
     font-weight: 600;
+    transition: border-color 160ms ease, background 160ms ease;
+  }
+
+  .ghost-pill:hover {
+    border-color: var(--accent-border);
+    background: rgba(173, 1, 95, 0.16);
+  }
+
+  .accent-text {
+    color: var(--accent-text);
+  }
+
+  .accent-text-strong {
+    color: var(--accent-text-strong);
+  }
+
+  .accent-chip {
+    border: 1px solid var(--accent-border);
+    background: var(--accent-soft);
+    color: var(--accent-text-strong);
+  }
+
+  .accent-chip-soft {
+    border: 1px solid rgba(255, 165, 214, 0.32);
+    background: rgba(173, 1, 95, 0.14);
+    color: var(--accent-text);
+  }
+
+  .accent-border {
+    border-color: var(--accent-border);
+  }
+
+  .accent-icon-wrap {
+    border: 1px solid var(--accent-border);
+    background: var(--accent-soft-strong);
+    color: var(--accent-text-strong);
+  }
+
+  .accent-title-gradient {
+    background-image: linear-gradient(105deg, #ffbee0 0%, #ff79ba 48%, #ffd9ef 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .single-line {
@@ -207,8 +269,8 @@ body,
     height: 8px;
     margin-top: 8px;
     border-radius: 9999px;
-    border: 1px solid rgba(169, 195, 255, 0.34);
-    background: rgba(173, 198, 255, 0.16);
+    border: 1px solid rgba(255, 165, 214, 0.34);
+    background: rgba(173, 1, 95, 0.16);
     overflow: hidden;
     user-select: none;
   }
@@ -219,20 +281,20 @@ body,
     top: 0;
     height: 100%;
     border-radius: 9999px;
-    background: linear-gradient(180deg, rgba(203, 224, 255, 0.98) 0%, rgba(145, 169, 255, 0.98) 100%);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35), 0 3px 10px rgba(57, 86, 168, 0.36);
+    background: linear-gradient(180deg, rgba(255, 214, 238, 0.99) 0%, rgba(218, 49, 132, 0.99) 100%);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35), 0 3px 10px rgba(122, 16, 75, 0.42);
     cursor: grab;
     transition: transform 120ms linear, width 160ms ease, height 160ms ease, background 160ms ease;
     will-change: transform;
   }
 
   .custom-scrollbar__thumb:hover {
-    background: linear-gradient(180deg, rgba(221, 236, 255, 1) 0%, rgba(164, 186, 255, 1) 100%);
+    background: linear-gradient(180deg, rgba(255, 229, 246, 1) 0%, rgba(230, 72, 152, 1) 100%);
   }
 
   .custom-scrollbar__thumb:active {
     cursor: grabbing;
-    background: linear-gradient(180deg, rgba(234, 245, 255, 1) 0%, rgba(180, 201, 255, 1) 100%);
+    background: linear-gradient(180deg, rgba(255, 241, 251, 1) 0%, rgba(193, 30, 110, 1) 100%);
   }
 
   .custom-scrollbar__track.is-dragging .custom-scrollbar__thumb {
@@ -280,8 +342,9 @@ body,
 body {
   font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background:
-    radial-gradient(1200px 700px at 15% -10%, #5b4bd9 0%, transparent 60%),
-    radial-gradient(900px 500px at 100% 0%, #286cbf 0%, transparent 58%),
+    radial-gradient(1200px 700px at 15% -10%, #6e1a49 0%, transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, #4e1740 0%, transparent 58%),
+    radial-gradient(720px 430px at 55% 110%, rgba(173, 1, 95, 0.34) 0%, transparent 62%),
     linear-gradient(165deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
   background-attachment: fixed;
   color: var(--text-primary);
@@ -305,6 +368,6 @@ body::before {
 }
 
 ::selection {
-  background: rgba(125, 180, 255, 0.38);
+  background: rgba(173, 1, 95, 0.38);
   color: #fff;
 }
