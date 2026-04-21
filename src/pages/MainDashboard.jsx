@@ -13,6 +13,9 @@ import {
   faMusic,
   faScissors,
   faUtensils,
+  faDumbbell,
+  faPills,
+  faMugHot,
   faLink,
   faClock,
   faCircleCheck,
@@ -28,7 +31,12 @@ export default function MainDashboard() {
     Restaurant: faUtensils,
     Barber: faScissors,
     Club: faMusic,
+    Fitness: faDumbbell,
+    Pharmacy: faPills,
+    Cafe: faMugHot,
   };
+  const topCoupons = necessitiesDocs.slice(0, 3);
+  const topEvents = calendarDocs.slice(0, 3);
 
   return (
     <div className="app-shell">
@@ -44,13 +52,9 @@ export default function MainDashboard() {
           </h2>
 
           <div className="mt-3">
-            <CustomScrollbar
-              orientation="horizontal"
-              viewportClassName="scroll-fade-x"
-              contentClassName="flex gap-3 pr-10 snap-x snap-mandatory"
-            >
-              {necessitiesDocs.map((vendor) => (
-                <article key={vendor.id} className="min-w-[228px] snap-start rounded-2xl border border-white/15 bg-white/5 p-3">
+            <CustomScrollbar orientation="horizontal" contentClassName="flex gap-3 pr-6 snap-x snap-mandatory">
+              {topCoupons.map((vendor) => (
+                <article key={vendor.id} className="min-w-[220px] max-w-[220px] snap-start rounded-2xl border border-white/15 bg-white/5 p-3">
                   <div className="relative mb-3 h-24 overflow-hidden rounded-2xl border border-white/14 bg-gradient-to-br from-[#ad015f]/34 to-[#ad015f]/10">
                     <div className="absolute -right-4 -top-6 h-16 w-16 rounded-full bg-white/25 blur-xl" />
                     <div className="absolute inset-0 flex items-center justify-between px-3">
@@ -106,7 +110,7 @@ export default function MainDashboard() {
           </h2>
 
           <div className="space-y-3">
-            {calendarDocs.map((event) => (
+            {topEvents.map((event) => (
               <article key={event.id} className="glass-panel p-4">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="accent-text inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider">

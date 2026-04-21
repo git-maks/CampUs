@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
+import CustomSelect from '../components/CustomSelect';
 import userProfile from '../data/user-profile.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -34,6 +35,16 @@ export default function ProfileSettings() {
   const [verificationStatus, setVerificationStatus] = useState('idle');
   const [verificationMessage, setVerificationMessage] = useState('');
   const [profileMessage, setProfileMessage] = useState('');
+
+  const languageOptions = [
+    { value: 'en', label: 'English' },
+    { value: 'pl', label: 'Polish' },
+    { value: 'it', label: 'Italian' },
+  ];
+  const currencyOptions = [
+    { value: 'PLN', label: 'PLN' },
+    { value: 'EUR', label: 'EUR' },
+  ];
 
   const trimmedEmail = universityEmail.trim();
   const isValidPollubEmail = useMemo(() => POLLUB_EMAIL_PATTERN.test(trimmedEmail), [trimmedEmail]);
@@ -127,47 +138,37 @@ export default function ProfileSettings() {
                 <label className="mb-1 flex items-center gap-2 text-sm font-medium text-white/82">
                   <FontAwesomeIcon icon={faLanguage} className="text-xs" /> Language
                 </label>
-                <select value={language} onChange={(event) => setLanguage(event.target.value)} className="frosted-input">
-                  <option value="en">English</option>
-                  <option value="pl">Polish</option>
-                  <option value="it">Italian</option>
-                </select>
+                <CustomSelect value={language} onChange={setLanguage} options={languageOptions} />
               </div>
 
               <div>
                 <label className="mb-1 flex items-center gap-2 text-sm font-medium text-white/82">
                   <FontAwesomeIcon icon={faCoins} className="text-xs" /> Main Currency
                 </label>
-                <select value={currency} onChange={(event) => setCurrency(event.target.value)} className="frosted-input">
-                  <option value="PLN">PLN</option>
-                  <option value="EUR">EUR</option>
-                </select>
+                <CustomSelect value={currency} onChange={setCurrency} options={currencyOptions} />
               </div>
 
               <div className="sm:col-span-2">
                 <label className="mb-1 flex items-center gap-2 text-sm font-medium text-white/82">
                   <FontAwesomeIcon icon={faCoins} className="text-xs" /> Secondary Currency
                 </label>
-                <select value={secondaryCurrency} onChange={(event) => setSecondaryCurrency(event.target.value)} className="frosted-input">
-                  <option value="EUR">EUR</option>
-                  <option value="PLN">PLN</option>
-                </select>
+                <CustomSelect value={secondaryCurrency} onChange={setSecondaryCurrency} options={currencyOptions} />
               </div>
             </div>
           </article>
 
           <article className="glass-panel p-4">
-            <div className="mb-3 flex items-start justify-between gap-3">
-              <div>
-                <h2 className="section-title mb-1 flex items-center gap-2 text-[1.2rem]">
+            <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div className="min-w-0">
+                <h2 className="section-title single-line mb-1 flex items-center gap-2 text-[1.08rem] sm:text-[1.2rem]">
                   <FontAwesomeIcon icon={faBuildingColumns} className="accent-text text-sm" />
                   University Enrollment
                 </h2>
-                <p className="section-subtitle">Verification is simulated and accepts only @pollub.edu.pl emails.</p>
+                <p className="section-subtitle text-[0.86rem]">Simulated verification. Only @pollub.edu.pl emails.</p>
               </div>
 
               <span
-                className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
+                className={`inline-flex w-fit items-center gap-1 whitespace-nowrap rounded-full border px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-wide ${
                   verificationStatus === 'verified'
                     ? 'border-[rgba(255,165,214,0.45)] bg-[rgba(173,1,95,0.28)] text-[#ffe5f3]'
                     : 'border-white/20 bg-white/10 text-white/82'
@@ -194,12 +195,12 @@ export default function ProfileSettings() {
 
               <button type="button" onClick={handleSendVerification} className="primary-pill inline-flex items-center gap-2 px-4 py-2 text-sm">
                 <FontAwesomeIcon icon={faPaperPlane} />
-                Send Verification Mail (Demo)
+                <span className="whitespace-nowrap">Send Verification Mail (Demo)</span>
               </button>
 
               {(verificationStatus === 'sent' || verificationStatus === 'error' || verificationStatus === 'verified') && (
                 <p
-                  className={`rounded-xl border px-3 py-2 text-xs ${
+                  className={`rounded-xl border px-3 py-2 text-xs break-words ${
                     verificationStatus === 'verified'
                       ? 'border-[rgba(255,165,214,0.45)] bg-[rgba(173,1,95,0.18)] text-[#ffe5f3]'
                       : 'border-white/15 bg-white/8 text-white/75'

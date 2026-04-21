@@ -3,7 +3,17 @@ import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import necessitiesData from '../data/necessities.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBasketShopping, faScissors, faMusic, faUtensils, faStore, faTag } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBasketShopping,
+  faScissors,
+  faMusic,
+  faUtensils,
+  faStore,
+  faTag,
+  faDumbbell,
+  faPills,
+  faMugHot,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Necessities() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -12,12 +22,18 @@ export default function Necessities() {
     Barber: 'from-[#c00f6c]/36 to-[#ad015f]/10',
     Club: 'from-[#d72583]/38 to-[#ad015f]/12',
     Restaurant: 'from-[#b20f66]/34 to-[#ad015f]/10',
+    Fitness: 'from-[#cf1f78]/36 to-[#ad015f]/12',
+    Pharmacy: 'from-[#bf166f]/34 to-[#ad015f]/12',
+    Cafe: 'from-[#da2f85]/34 to-[#ad015f]/12',
   };
   const typeIcons = {
     Grocery: faBasketShopping,
     Barber: faScissors,
     Club: faMusic,
     Restaurant: faUtensils,
+    Fitness: faDumbbell,
+    Pharmacy: faPills,
+    Cafe: faMugHot,
   };
 
   return (

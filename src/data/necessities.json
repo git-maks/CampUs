@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Żabka Studentska",
+    "name": "Zabka Studentska",
     "type": "Grocery",
     "discount": "10% off for students",
     "logo": "/src/assets/images/store-logos/zabka.jpg"
@@ -12,5 +12,89 @@
     "type": "Grocery",
     "discount": "Deals inside app",
     "logo": "/src/assets/images/store-logos/biedronka.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Lidl Politechnika",
+    "type": "Grocery",
+    "discount": "5 PLN voucher over 60 PLN",
+    "logo": "/src/assets/images/store-logos/lidl.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Carrefour Express Nadbystrzycka",
+    "type": "Grocery",
+    "discount": "Student breakfast bundle",
+    "logo": "/src/assets/images/store-logos/carrefour.jpg"
+  },
+  {
+    "id": 5,
+    "name": "City Fit Lublin",
+    "type": "Fitness",
+    "discount": "20% off monthly student pass",
+    "logo": "/src/assets/images/store-logos/city-fit.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Rossmann Krakowskie",
+    "type": "Pharmacy",
+    "discount": "12% on hygiene products",
+    "logo": "/src/assets/images/store-logos/rossmann.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Hebe Lublin Plaza",
+    "type": "Pharmacy",
+    "discount": "Buy 2 get 1 skincare",
+    "logo": "/src/assets/images/store-logos/hebe.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Costa Coffee Campus",
+    "type": "Cafe",
+    "discount": "Second coffee -50%",
+    "logo": "/src/assets/images/store-logos/costa.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Sushi Ninja Lublin",
+    "type": "Restaurant",
+    "discount": "15% student lunch set",
+    "logo": "/src/assets/images/store-logos/sushi-ninja.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Dominos Lublin",
+    "type": "Restaurant",
+    "discount": "2-for-1 medium pizza",
+    "logo": "/src/assets/images/store-logos/dominos.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Gentlemen Barber",
+    "type": "Barber",
+    "discount": "25% first haircut",
+    "logo": "/src/assets/images/store-logos/barber.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Browar Club",
+    "type": "Club",
+    "discount": "Free entry before 11PM",
+    "logo": "/src/assets/images/store-logos/club.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Uboot Club",
+    "type": "Club",
+    "discount": "Erasmus Thursday: first drink -30%",
+    "logo": "/src/assets/images/store-logos/club.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Kazik Club",
+    "type": "Club",
+    "discount": "Student entry queue priority",
+    "logo": "/src/assets/images/store-logos/club.jpg"
   }
 ]

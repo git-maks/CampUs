@@ -5,5 +5,54 @@
     "specialty": "General Practitioner",
     "languages": ["English", "Polish"],
     "image": "/src/assets/images/doctors/doc1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Anna Nowak",
+    "specialty": "Pediatrics",
+    "languages": ["English", "Polish", "German"],
+    "image": "/src/assets/images/doctors/doc2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Marco Bianchi",
+    "specialty": "Orthopedics",
+    "languages": ["English", "Italian", "Polish"],
+    "image": "/src/assets/images/doctors/doc3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Olena Shevchenko",
+    "specialty": "Gynecology",
+    "languages": ["English", "Ukrainian", "Polish"],
+    "image": "/src/assets/images/doctors/doc4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Dr. Piotr Zielinski",
+    "specialty": "Dentistry",
+    "languages": ["English", "Polish"],
+    "image": "/src/assets/images/doctors/doc5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Dr. Marta Wisniewska",
+    "specialty": "Dermatology",
+    "languages": ["English", "Polish", "French"],
+    "image": "/src/assets/images/doctors/doc6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Dr. Jakub Mazur",
+    "specialty": "Psychiatry",
+    "languages": ["English", "Polish", "Spanish"],
+    "image": "/src/assets/images/doctors/doc7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Dr. Sofia Romano",
+    "specialty": "Sports Medicine",
+    "languages": ["English", "Italian", "Polish"],
+    "image": "/src/assets/images/doctors/doc8.jpg"
   }
 ]

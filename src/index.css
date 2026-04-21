@@ -114,6 +114,9 @@ html,
 body,
 #root {
   min-height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -130,9 +133,11 @@ body,
 
   .app-shell {
     width: min(100%, 460px);
+    max-width: 100%;
     min-height: 100vh;
     margin-inline: auto;
     padding-bottom: 22px;
+    overflow-x: hidden;
   }
 
   .page-main {
@@ -170,6 +175,80 @@ body,
   .frosted-input:focus {
     border-color: var(--accent-border);
     box-shadow: 0 0 0 3px rgba(173, 1, 95, 0.24);
+  }
+
+  .custom-select {
+    position: relative;
+    width: 100%;
+  }
+
+  .custom-select__trigger {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+
+  .custom-select__trigger:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .custom-select__trigger.is-open,
+  .custom-select__trigger:focus-visible {
+    outline: none;
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 3px rgba(173, 1, 95, 0.24);
+  }
+
+  .custom-select__menu {
+    position: absolute;
+    z-index: 70;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    border-radius: 16px;
+    border: 1px solid var(--accent-border);
+    background: rgba(22, 24, 56, 0.96);
+    backdrop-filter: blur(16px) saturate(145%);
+    -webkit-backdrop-filter: blur(16px) saturate(145%);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+    max-height: 240px;
+    overflow: auto;
+    padding: 6px;
+  }
+
+  .custom-select__option {
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: rgba(237, 241, 255, 0.92);
+    padding: 10px 12px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    transition: border-color 140ms ease, background 140ms ease;
+  }
+
+  .custom-select__option:hover {
+    border-color: rgba(255, 165, 214, 0.3);
+    background: rgba(173, 1, 95, 0.17);
+  }
+
+  .custom-select__option.is-active {
+    border-color: rgba(255, 165, 214, 0.42);
+    background: rgba(173, 1, 95, 0.24);
+    color: var(--accent-text-strong);
   }
 
   .primary-pill {

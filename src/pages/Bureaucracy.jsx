@@ -2,7 +2,17 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileLines, faBuilding, faUserCheck, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFileLines,
+  faBuilding,
+  faUserCheck,
+  faArrowRight,
+  faPassport,
+  faShieldHalved,
+  faIdCard,
+  faBriefcase,
+  faHouse,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Bureaucracy() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -11,6 +21,11 @@ export default function Bureaucracy() {
     { title: 'Register Residence (PESEL)', icon: faFileLines, desc: 'How to register your temporary address in Poland.' },
     { title: 'Bank Account Setup', icon: faBuilding, desc: 'Top student accounts with zero fees and dual currencies.' },
     { title: 'Student ID Card System', icon: faUserCheck, desc: 'Access 50% transport discounts with your student card.' },
+    { title: 'Temporary Residence Permit', icon: faPassport, desc: 'Checklist for permit submission, fees, and office appointments.' },
+    { title: 'NFZ Health Registration', icon: faShieldHalved, desc: 'How to activate public healthcare eligibility during studies.' },
+    { title: 'Address Confirmation Letter', icon: faHouse, desc: 'Template and requirements for landlord signed residency confirmations.' },
+    { title: 'Tax ID and Work Rules', icon: faIdCard, desc: 'Essential tax and legal basics before part-time student employment.' },
+    { title: 'Internship Documentation', icon: faBriefcase, desc: 'University paperwork needed for Erasmus internship recognition.' },
   ];
 
   return (

@@ -18,5 +18,65 @@
     "verified": false,
     "image": "/src/assets/images/apartments/shared.jpg",
     "description": "Looking for 2 more roommates to share this 3-bedroom apartment."
+  },
+  {
+    "id": 3,
+    "title": "Riverside One-Bed Flat",
+    "type": "Standalone",
+    "price_pln": 2450,
+    "price_eur": 568,
+    "verified": true,
+    "image": "/src/assets/images/apartments/riverside.jpg",
+    "description": "Bright one-bedroom flat near green walking areas and direct bus to LUT."
+  },
+  {
+    "id": 4,
+    "title": "Old Town Shared Loft",
+    "type": "Group",
+    "price_pln": 1650,
+    "price_eur": 383,
+    "verified": true,
+    "image": "/src/assets/images/apartments/old-town-loft.jpg",
+    "description": "Large loft with 4 beds, ideal for Erasmus groups who want city-center nightlife."
+  },
+  {
+    "id": 5,
+    "title": "Modern Studio with Balcony",
+    "type": "Standalone",
+    "price_pln": 2350,
+    "price_eur": 545,
+    "verified": true,
+    "image": "/src/assets/images/apartments/balcony-studio.jpg",
+    "description": "Quiet studio with a private balcony and high-speed internet for remote classes."
+  },
+  {
+    "id": 6,
+    "title": "Student House near Tram Loop",
+    "type": "Group",
+    "price_pln": 1780,
+    "price_eur": 413,
+    "verified": true,
+    "image": "/src/assets/images/apartments/student-house.jpg",
+    "description": "Shared house with garden, bike shed, and quick tram connection to university."
+  },
+  {
+    "id": 7,
+    "title": "Quiet Flat for Couple",
+    "type": "Standalone",
+    "price_pln": 2600,
+    "price_eur": 603,
+    "verified": false,
+    "image": "/src/assets/images/apartments/couple-flat.jpg",
+    "description": "Two-room apartment in a calm district, suitable for a couple or two friends."
+  },
+  {
+    "id": 8,
+    "title": "Women-Only Shared Apartment",
+    "type": "Roommate",
+    "price_pln": 1400,
+    "price_eur": 325,
+    "verified": true,
+    "image": "/src/assets/images/apartments/women-shared.jpg",
+    "description": "Safe women-only shared apartment with private desks and secure building access."
   }
 ]

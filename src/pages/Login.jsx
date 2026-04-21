@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLanguage, faCoins, faRightToBracket, faForward } from '@fortawesome/free-solid-svg-icons';
 import userProfile from '../data/user-profile.json';
+import CustomSelect from '../components/CustomSelect';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -11,6 +12,16 @@ export default function Login() {
   const [language, setLanguage] = useState(userProfile.language || 'en');
   const [currency, setCurrency] = useState(userProfile.currency_default || 'PLN');
   const [secondaryCurrency, setSecondaryCurrency] = useState(userProfile.currency_secondary || 'EUR');
+
+  const languageOptions = [
+    { value: 'en', label: 'English' },
+    { value: 'pl', label: 'Polish' },
+    { value: 'ua', label: 'Ukrainian' },
+  ];
+  const currencyOptions = [
+    { value: 'PLN', label: 'PLN' },
+    { value: 'EUR', label: 'EUR' },
+  ];
 
   const handleSkip = () => {
     navigate('/dashboard');
@@ -76,21 +87,14 @@ export default function Login() {
               <label className="mb-1 flex items-center gap-2 text-sm font-medium text-white/80">
                 <FontAwesomeIcon icon={faLanguage} className="text-xs" /> Language
               </label>
-              <select value={language} onChange={(e) => setLanguage(e.target.value)} className="frosted-input">
-                <option value="en">English</option>
-                <option value="pl">Polish</option>
-                <option value="ua">Ukrainian</option>
-              </select>
+              <CustomSelect value={language} onChange={setLanguage} options={languageOptions} />
             </div>
 
             <div>
               <label className="mb-1 flex items-center gap-2 text-sm font-medium text-white/80">
                 <FontAwesomeIcon icon={faCoins} className="text-xs" /> Main Currency
               </label>
-              <select value={currency} onChange={(e) => setCurrency(e.target.value)} className="frosted-input">
-                <option value="PLN">PLN</option>
-                <option value="EUR">EUR</option>
-              </select>
+              <CustomSelect value={currency} onChange={setCurrency} options={currencyOptions} />
             </div>
           </div>
 
@@ -98,10 +102,7 @@ export default function Login() {
             <label className="mb-1 flex items-center gap-2 text-sm font-medium text-white/80">
               <FontAwesomeIcon icon={faCoins} className="text-xs" /> Secondary Currency
             </label>
-            <select value={secondaryCurrency} onChange={(e) => setSecondaryCurrency(e.target.value)} className="frosted-input">
-              <option value="EUR">EUR</option>
-              <option value="PLN">PLN</option>
-            </select>
+            <CustomSelect value={secondaryCurrency} onChange={setSecondaryCurrency} options={currencyOptions} />
           </div>
 
           <div className="grid grid-cols-2 gap-3 pt-2">
