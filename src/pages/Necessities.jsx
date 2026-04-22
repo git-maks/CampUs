@@ -18,15 +18,6 @@ import {
 
 export default function Necessities() {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const typeAccent = {
-    Grocery: 'from-[#ad015f]/36 to-[#ad015f]/10',
-    Barber: 'from-[#c00f6c]/36 to-[#ad015f]/10',
-    Club: 'from-[#d72583]/38 to-[#ad015f]/12',
-    Restaurant: 'from-[#b20f66]/34 to-[#ad015f]/10',
-    Fitness: 'from-[#cf1f78]/36 to-[#ad015f]/12',
-    Pharmacy: 'from-[#bf166f]/34 to-[#ad015f]/12',
-    Cafe: 'from-[#da2f85]/34 to-[#ad015f]/12',
-  };
   const typeIcons = {
     Grocery: faBasketShopping,
     Barber: faScissors,
@@ -53,21 +44,24 @@ export default function Necessities() {
           {necessitiesData.map((item) => (
             <article key={item.id} className="glass-panel p-4">
               {necessityLogoById[item.id] ? (
-                <div className="relative mb-3 h-20 overflow-hidden rounded-2xl border border-white/18 bg-white/6 p-2">
-                  <img src={necessityLogoById[item.id]} alt={`${item.name} logo`} className="h-full w-full rounded-xl object-contain bg-white/80 p-1" loading="lazy" />
+                <div
+                  className={`relative mb-3 aspect-[5/4] w-full overflow-hidden rounded-2xl border border-white/18 p-2 ${
+                    item.id === 13 || item.id === 14 ? 'bg-[#030303]' : 'bg-white'
+                  }`}
+                >
+                  <img
+                    src={necessityLogoById[item.id]}
+                    alt={`${item.name} logo`}
+                    className={`h-full w-full rounded-xl object-contain p-1 ${item.id === 13 || item.id === 14 ? 'bg-transparent' : 'bg-white'}`}
+                    loading="lazy"
+                  />
                 </div>
               ) : null}
 
-              <div
-                className={`relative mb-3 flex h-16 items-center justify-center overflow-hidden rounded-2xl border border-white/18 bg-gradient-to-br ${typeAccent[item.type] || 'from-white/22 to-white/8'}`}
-              >
-                <div className="absolute -right-4 -top-4 h-10 w-10 rounded-full bg-white/25 blur-lg" />
-                <span className="relative text-xl text-white">
-                  <FontAwesomeIcon icon={typeIcons[item.type] || faStore} />
-                </span>
-              </div>
-
-              <h3 className="single-line text-sm font-semibold leading-tight text-white">{item.name}</h3>
+              <h3 className="single-line inline-flex max-w-full items-center gap-1.5 text-sm font-semibold leading-tight text-white">
+                <FontAwesomeIcon icon={typeIcons[item.type] || faStore} className="accent-text text-[0.62rem]" />
+                {item.name}
+              </h3>
               <span className="accent-text single-line mt-1 text-[0.65rem] font-semibold uppercase tracking-wider">{item.type}</span>
               <p className="accent-chip-soft single-line mt-2 inline-flex max-w-full items-center gap-1 rounded-full px-2 py-1 text-xs font-medium">
                 <FontAwesomeIcon icon={faTag} className="text-[0.62rem]" />

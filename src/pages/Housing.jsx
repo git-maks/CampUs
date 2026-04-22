@@ -262,13 +262,13 @@ export default function Housing() {
                     </p>
                   </div>
 
-                  <div className="mt-3 flex items-start justify-between gap-3">
-                    <div>
+                  <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
                       <h3 className="single-line text-[1.35rem] font-semibold leading-tight tracking-tight text-white">{apt.title}</h3>
                       <p className="single-line mt-1 text-sm text-white/68">{apt.type}</p>
                     </div>
                     {apt.verified && (
-                      <span className="accent-chip-soft inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold">
+                      <span className="accent-chip-soft inline-flex max-w-full items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold whitespace-nowrap">
                         <FontAwesomeIcon icon={faCircleCheck} className="text-[0.62rem]" />
                         Verified
                       </span>
@@ -288,15 +288,15 @@ export default function Housing() {
         ) : (
           <section className="space-y-4">
             <article className="glass-panel p-4">
-              <div className="mb-3 flex items-start justify-between gap-3">
-                <div>
+              <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
                   <p className="accent-text inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em]">
                     <FontAwesomeIcon icon={faHouse} className="text-[0.7rem]" />
                     Reserved apartment
                   </p>
                   <h2 className="mt-1 text-[1.45rem] font-semibold leading-tight tracking-tight text-white">{reservedApartment.title}</h2>
                 </div>
-                <span className="accent-chip inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                <span className="accent-chip inline-flex max-w-full items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
                   <FontAwesomeIcon icon={contractStatus === 'signed' ? faCircleCheck : faClock} className="text-[0.62rem]" />
                   {homeStatusLabel}
                 </span>
@@ -342,8 +342,8 @@ export default function Housing() {
             </article>
 
             <article className="glass-panel p-4">
-              <div className="flex items-start justify-between gap-3">
-                <div>
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
                   <h3 className="section-title mb-1 flex items-center gap-2 text-[1.2rem]">
                     <FontAwesomeIcon icon={faFileLines} className="accent-text text-sm" />
                     Lease Contract PDF Preview
@@ -351,7 +351,7 @@ export default function Housing() {
                   <p className="section-subtitle">Current language: {currentLanguageLabel}</p>
                 </div>
 
-                <button type="button" onClick={switchContractLanguage} className="ghost-pill inline-flex shrink-0 items-center gap-2 px-3 py-2 text-xs">
+                <button type="button" onClick={switchContractLanguage} className="ghost-pill inline-flex max-w-full items-center gap-2 px-3 py-2 text-xs">
                   <FontAwesomeIcon icon={faLanguage} className="text-[0.72rem]" />
                   Switch to {nextLanguageLabel}
                 </button>

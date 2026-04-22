@@ -17,11 +17,14 @@ import doctorMaleFour from '../assets/images/doctors/lekarz m 2-6.jpg';
 import doctorFemaleFour from '../assets/images/doctors/lekarz k 4.jpg';
 
 import zabkaCoupon from '../assets/images/store-and-vendors-assets/zabka kupon .jpeg';
-import biedronkaLogo from '../assets/images/store-and-vendors-assets/biedronka logo.jpg';
+import zabkaLogo from '../assets/images/store-and-vendors-assets/zabka-logo.png';
+import biedronkaLogo from '../assets/images/store-and-vendors-assets/biedronka logo.png';
 import biedronkaCoupon from '../assets/images/store-and-vendors-assets/biedronka kupon.jpg';
+import carrefourLogo from '../assets/images/store-and-vendors-assets/carefour-express.png';
 import lidlLogo from '../assets/images/store-and-vendors-assets/lidllogo.jpg';
 import lidlCoupon from '../assets/images/store-and-vendors-assets/lidlkupon.jpg';
 import cityFitLogo from '../assets/images/store-and-vendors-assets/city fit logo.jpg';
+import rossmannLogo from '../assets/images/store-and-vendors-assets/rossmann.png';
 import hebeLogo from '../assets/images/store-and-vendors-assets/hebe-logo-1.jpg';
 import costaLogo from '../assets/images/store-and-vendors-assets/Costa_Coffee_logo.svg.jpg';
 import sushiLogo from '../assets/images/store-and-vendors-assets/sushi.jpeg';
@@ -68,10 +71,12 @@ export const doctorImageById = {
 };
 
 export const necessityLogoById = {
-  1: zabkaCoupon,
+  1: zabkaLogo,
   2: biedronkaLogo,
   3: lidlLogo,
+  4: carrefourLogo,
   5: cityFitLogo,
+  6: rossmannLogo,
   7: hebeLogo,
   8: costaLogo,
   9: sushiLogo,

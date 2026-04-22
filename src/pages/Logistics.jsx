@@ -29,13 +29,18 @@ export default function Logistics() {
           {transportOptions.map((opt, i) => (
             <article key={i} className="glass-panel p-5">
               {logisticsImageByKey[opt.key] ? (
-                <div className="mb-4 h-24 overflow-hidden rounded-2xl border border-white/18 bg-white/85 p-2">
-                  <img src={logisticsImageByKey[opt.key]} alt={`${opt.title} illustration`} className="h-full w-full object-contain" loading="lazy" />
+                <div className={`mb-4 h-24 overflow-hidden rounded-2xl border border-white/18 p-2 ${opt.key === 'sim' ? 'bg-[#f7f7f7]' : 'bg-white'}`}>
+                  <img
+                    src={logisticsImageByKey[opt.key]}
+                    alt={`${opt.title} illustration`}
+                    className={`h-full w-full rounded-xl object-contain p-1 ${opt.key === 'sim' ? 'bg-[#f7f7f7]' : 'bg-white'}`}
+                    loading="lazy"
+                  />
                 </div>
               ) : null}
 
-              <div className="flex items-start justify-between gap-4">
-                <div>
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="min-w-0 flex-1">
                   <h3 className="single-line inline-flex max-w-[210px] items-center gap-2 text-[1.2rem] font-semibold leading-tight tracking-tight text-white">
                     <FontAwesomeIcon icon={opt.title.includes('Bus') ? faBus : faSimCard} className="accent-text text-sm" />
                     {opt.title}
@@ -43,7 +48,7 @@ export default function Logistics() {
                   <p className="mt-1 text-sm text-white/72">{opt.desc}</p>
                 </div>
 
-                <span className="accent-chip inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                <span className="accent-chip inline-flex max-w-full items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
                   <FontAwesomeIcon icon={faBolt} className="text-[0.62rem]" />
                   instant
                 </span>

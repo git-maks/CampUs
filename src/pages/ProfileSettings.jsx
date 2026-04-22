@@ -34,7 +34,6 @@ export default function ProfileSettings() {
   const [enteredCode, setEnteredCode] = useState('');
   const [verificationStatus, setVerificationStatus] = useState('idle');
   const [verificationMessage, setVerificationMessage] = useState('');
-  const [profileMessage, setProfileMessage] = useState('');
 
   const languageOptions = [
     { value: 'en', label: 'English' },
@@ -95,11 +94,6 @@ export default function ProfileSettings() {
     setVerificationMessage(`University enrollment verified for ${trimmedEmail} (simulated).`);
   };
 
-  const handleSaveProfile = (event) => {
-    event.preventDefault();
-    setProfileMessage('Profile settings saved for this demo session.');
-  };
-
   return (
     <div className="app-shell">
       <Header toggleMenu={() => setDrawerOpen(!drawerOpen)} />
@@ -112,7 +106,7 @@ export default function ProfileSettings() {
         </h1>
         <p className="section-subtitle">Manage your personal details and verify your university enrollment.</p>
 
-        <form className="space-y-4" onSubmit={handleSaveProfile}>
+        <div className="space-y-4">
           <article className="glass-panel p-4">
             <h2 className="section-title mb-3 flex items-center gap-2 text-[1.2rem]">
               <FontAwesomeIcon icon={faUser} className="accent-text text-sm" />
@@ -148,7 +142,7 @@ export default function ProfileSettings() {
                 <CustomSelect value={currency} onChange={setCurrency} options={currencyOptions} />
               </div>
 
-              <div className="sm:col-span-2">
+              <div>
                 <label className="mb-1 flex items-center gap-2 text-sm font-medium text-white/82">
                   <FontAwesomeIcon icon={faCoins} className="text-xs" /> Secondary Currency
                 </label>
@@ -230,11 +224,7 @@ export default function ProfileSettings() {
             </div>
           </article>
 
-          <div className="flex items-center gap-3">
-            <button type="submit" className="primary-pill px-5 py-2 text-sm">Save Profile</button>
-            {profileMessage && <p className="accent-text text-xs">{profileMessage}</p>}
-          </div>
-        </form>
+        </div>
       </main>
     </div>
   );
