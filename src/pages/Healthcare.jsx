@@ -45,7 +45,7 @@ export default function Healthcare() {
             <article key={doc.id} className="glass-panel p-5">
               {doctorImageById[doc.id] ? (
                 <div className="relative mb-4 h-44 overflow-hidden rounded-2xl border border-white/16">
-                  <img src={doctorImageById[doc.id]} alt={`${doc.name} portrait`} className="h-full w-full object-cover" loading="lazy" />
+                  <img src={doctorImageById[doc.id]} alt={`${doc.name} portrait`} className="h-full w-full object-cover object-top" loading="lazy" />
                   <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0d1020]/80 to-transparent" />
                 </div>
               ) : null}
