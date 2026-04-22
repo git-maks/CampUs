@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import necessitiesData from '../data/necessities.json';
+import { necessityLogoById } from '../data/assetMaps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBasketShopping,
@@ -51,6 +52,12 @@ export default function Necessities() {
         <div className="grid grid-cols-2 gap-4">
           {necessitiesData.map((item) => (
             <article key={item.id} className="glass-panel p-4">
+              {necessityLogoById[item.id] ? (
+                <div className="relative mb-3 h-20 overflow-hidden rounded-2xl border border-white/18 bg-white/6 p-2">
+                  <img src={necessityLogoById[item.id]} alt={`${item.name} logo`} className="h-full w-full rounded-xl object-contain bg-white/80 p-1" loading="lazy" />
+                </div>
+              ) : null}
+
               <div
                 className={`relative mb-3 flex h-16 items-center justify-center overflow-hidden rounded-2xl border border-white/18 bg-gradient-to-br ${typeAccent[item.type] || 'from-white/22 to-white/8'}`}
               >

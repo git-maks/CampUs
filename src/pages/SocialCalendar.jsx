@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import calendarData from '../data/calendar.json';
+import { socialEventImageById } from '../data/assetMaps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faClock, faLocationDot, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,6 +25,13 @@ export default function SocialCalendar() {
           {calendarData.map((event) => (
             <article key={event.id} className="glass-panel relative overflow-hidden p-5">
               <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/20 blur-2xl" />
+
+              {socialEventImageById[event.id] ? (
+                <div className="relative mb-3 h-36 overflow-hidden rounded-2xl border border-white/18">
+                  <img src={socialEventImageById[event.id]} alt={`${event.title} venue`} className="h-full w-full object-cover" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1020]/72 to-transparent" />
+                </div>
+              ) : null}
 
               <div className="mb-2 flex items-start justify-between">
                 <span className="accent-chip inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold uppercase tracking-wider">

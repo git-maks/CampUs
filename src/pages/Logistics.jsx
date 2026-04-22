@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
+import { logisticsImageByKey } from '../data/assetMaps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBus, faSimCard, faBolt, faTag, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,8 +9,8 @@ export default function Logistics() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const transportOptions = [
-    { title: 'Monthly Bus Pass', price: '55 PLN', desc: 'Valid for all city zones.' },
-    { title: 'Prepaid SIM Card', price: '30 PLN', desc: '30GB data + unlimited calls.' },
+    { key: 'bus', title: 'Monthly Bus Pass', price: '55 PLN', desc: 'Valid for all city zones.' },
+    { key: 'sim', title: 'Prepaid SIM Card', price: '30 PLN', desc: '30GB data + unlimited calls.' },
   ];
 
   return (
@@ -27,6 +28,12 @@ export default function Logistics() {
         <div className="space-y-4">
           {transportOptions.map((opt, i) => (
             <article key={i} className="glass-panel p-5">
+              {logisticsImageByKey[opt.key] ? (
+                <div className="mb-4 h-24 overflow-hidden rounded-2xl border border-white/18 bg-white/85 p-2">
+                  <img src={logisticsImageByKey[opt.key]} alt={`${opt.title} illustration`} className="h-full w-full object-contain" loading="lazy" />
+                </div>
+              ) : null}
+
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="single-line inline-flex max-w-[210px] items-center gap-2 text-[1.2rem] font-semibold leading-tight tracking-tight text-white">

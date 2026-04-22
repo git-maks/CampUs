@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import doctorsData from '../data/doctors.json';
+import { doctorImageById } from '../data/assetMaps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeartPulse,
@@ -42,10 +43,26 @@ export default function Healthcare() {
         <div className="space-y-4">
           {doctorsData.map((doc) => (
             <article key={doc.id} className="glass-panel p-5">
-              <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-white/16 text-xl font-bold text-white backdrop-blur-xl">
-                  <FontAwesomeIcon icon={faStethoscope} className="text-xl" />
+              {doctorImageById[doc.id] ? (
+                <div className="relative mb-4 h-44 overflow-hidden rounded-2xl border border-white/16">
+                  <img src={doctorImageById[doc.id]} alt={`${doc.name} portrait`} className="h-full w-full object-cover" loading="lazy" />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0d1020]/80 to-transparent" />
                 </div>
+              ) : null}
+
+              <div className="flex items-center gap-4">
+                {doctorImageById[doc.id] ? (
+                  <img
+                    src={doctorImageById[doc.id]}
+                    alt={`${doc.name} avatar`}
+                    className="h-16 w-16 rounded-full border border-white/30 object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-white/16 text-xl font-bold text-white backdrop-blur-xl">
+                    <FontAwesomeIcon icon={faStethoscope} className="text-xl" />
+                  </div>
+                )}
 
                 <div className="flex flex-col">
                   <h3 className="text-xl font-semibold tracking-tight text-white">{doc.name}</h3>

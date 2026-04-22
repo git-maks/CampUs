@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import housingData from '../data/apartments.json';
+import { housingImageById } from '../data/assetMaps';
 import DualCurrency from '../components/DualCurrency';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBuilding, faHouse, faUserGroup, faImage, faCircleCheck, faFileLines, faLanguage, faClock } from '@fortawesome/free-solid-svg-icons';
@@ -44,6 +45,7 @@ export default function Housing() {
     depositPln: reservedApartment.price_pln,
     depositEur: reservedApartment.price_eur,
   };
+  const reservedImage = housingImageById[reservedApartment.id] ?? housingImageById['roommate-1'];
 
   const contractDocuments = {
     pl: {
@@ -235,16 +237,26 @@ export default function Housing() {
             </div>
 
             <div className="space-y-4">
-              {filteredHousing.map((apt) => (
+              {filteredHousing.map((apt) => {
+                const listingImage = housingImageById[apt.id];
+
+                return (
                 <article key={apt.id} className="glass-panel p-4">
                   <div className="relative h-44 overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-white/20 to-white/7">
-                    <div className="absolute -left-5 -top-6 h-28 w-28 rounded-full bg-[#ad015f]/30 blur-2xl" />
-                    <div className="absolute -bottom-10 -right-6 h-28 w-28 rounded-full bg-[#da2a86]/26 blur-2xl" />
+                    {listingImage ? (
+                      <img src={listingImage} alt={`${apt.title} preview`} className="h-full w-full object-cover" loading="lazy" />
+                    ) : (
+                      <>
+                        <div className="absolute -left-5 -top-6 h-28 w-28 rounded-full bg-[#ad015f]/30 blur-2xl" />
+                        <div className="absolute -bottom-10 -right-6 h-28 w-28 rounded-full bg-[#da2a86]/26 blur-2xl" />
+                      </>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1020]/70 to-transparent" />
                     <p className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/15 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-white/90">
                       <FontAwesomeIcon icon={housingTypeIcons[apt.type] || faBuilding} className="text-[0.6rem]" />
                       {apt.type} option
                     </p>
-                    <p className="absolute bottom-3 left-3 inline-flex items-center gap-2 text-sm text-white/75">
+                    <p className="absolute bottom-3 left-3 inline-flex items-center gap-2 text-sm text-white/85">
                       <FontAwesomeIcon icon={faImage} className="text-xs" />
                       Preview
                     </p>
@@ -269,7 +281,8 @@ export default function Housing() {
                     <DualCurrency pln={apt.price_pln} eur={apt.price_eur} />
                   </div>
                 </article>
-              ))}
+              );
+              })}
             </div>
           </>
         ) : (
@@ -290,8 +303,15 @@ export default function Housing() {
               </div>
 
               <div className="relative h-36 overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-white/18 to-white/5">
-                <div className="absolute -left-5 -top-6 h-24 w-24 rounded-full bg-[#ad015f]/32 blur-2xl" />
-                <div className="absolute -bottom-8 -right-6 h-24 w-24 rounded-full bg-[#da2a86]/26 blur-2xl" />
+                {reservedImage ? (
+                  <img src={reservedImage} alt={`${reservedApartment.title} preview`} className="h-full w-full object-cover" loading="lazy" />
+                ) : (
+                  <>
+                    <div className="absolute -left-5 -top-6 h-24 w-24 rounded-full bg-[#ad015f]/32 blur-2xl" />
+                    <div className="absolute -bottom-8 -right-6 h-24 w-24 rounded-full bg-[#da2a86]/26 blur-2xl" />
+                  </>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1020]/72 to-transparent" />
                 <p className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/15 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-white/90">
                   <FontAwesomeIcon icon={faImage} className="text-[0.6rem]" />
                   Home preview

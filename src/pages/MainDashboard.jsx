@@ -4,6 +4,7 @@ import MenuDrawer from '../components/MenuDrawer';
 import CustomScrollbar from '../components/CustomScrollbar';
 import necessitiesDocs from '../data/necessities.json';
 import calendarDocs from '../data/calendar.json';
+import { necessityLogoById, necessityPromoById } from '../data/assetMaps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTicket,
@@ -56,12 +57,26 @@ export default function MainDashboard() {
               {topCoupons.map((vendor) => (
                 <article key={vendor.id} className="min-w-[220px] max-w-[220px] snap-start rounded-2xl border border-white/15 bg-white/5 p-3">
                   <div className="relative mb-3 h-24 overflow-hidden rounded-2xl border border-white/14 bg-gradient-to-br from-[#ad015f]/34 to-[#ad015f]/10">
-                    <div className="absolute -right-4 -top-6 h-16 w-16 rounded-full bg-white/25 blur-xl" />
-                    <div className="absolute inset-0 flex items-center justify-between px-3">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/35 bg-white/15 text-sm font-bold text-white">
+                    {necessityPromoById[vendor.id] || necessityLogoById[vendor.id] ? (
+                      <img
+                        src={necessityPromoById[vendor.id] || necessityLogoById[vendor.id]}
+                        alt={`${vendor.name} promotion`}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/35 bg-white/15 text-sm font-bold text-white">
+                          <FontAwesomeIcon icon={vendorTypeIcons[vendor.type] || faStore} className="text-base" />
+                        </span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1020]/70 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-3 pb-2">
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/35 bg-white/15 text-sm font-bold text-white">
                         <FontAwesomeIcon icon={vendorTypeIcons[vendor.type] || faStore} className="text-base" />
                       </span>
-                      <span className="single-line inline-flex max-w-[128px] items-center gap-1 text-xs font-semibold uppercase tracking-wide text-white/70">
+                      <span className="single-line inline-flex max-w-[128px] items-center gap-1 text-xs font-semibold uppercase tracking-wide text-white/85">
                         <FontAwesomeIcon icon={faTag} className="text-[0.65rem]" />
                         {vendor.type}
                       </span>
@@ -100,6 +115,12 @@ export default function MainDashboard() {
                 </p>
               </div>
             </div>
+
+            {necessityLogoById[1] ? (
+              <div className="mt-3 h-14 overflow-hidden rounded-xl border border-white/20 bg-white/85 p-2">
+                <img src={necessityLogoById[1]} alt="Zabka wallet logo" className="h-full w-full object-contain" loading="lazy" />
+              </div>
+            ) : null}
           </div>
         </section>
 
