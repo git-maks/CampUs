@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header({ toggleMenu }) {
+  const navigate = useNavigate();
+
   return (
     <header className="sticky top-0 z-30 px-4 pt-4">
       <div className="glass-panel flex items-center justify-between px-4 py-3">
@@ -19,9 +22,14 @@ export default function Header({ toggleMenu }) {
           <span className="accent-title-gradient">CampUs</span>
         </h1>
 
-        <div className="accent-icon-wrap flex h-11 w-11 items-center justify-center rounded-2xl">
+        <button
+          type="button"
+          onClick={() => navigate('/profile')}
+          aria-label="Open profile settings"
+          className="accent-icon-wrap flex h-11 w-11 items-center justify-center rounded-2xl transition hover:brightness-110 active:scale-[0.98]"
+        >
           <FontAwesomeIcon icon={faUser} className="text-base" />
-        </div>
+        </button>
       </div>
     </header>
   );

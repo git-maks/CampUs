@@ -119,8 +119,8 @@ export default function MainDashboard() {
             </div>
 
             {zabkaBarcode ? (
-              <div className="mt-3 h-14 overflow-hidden rounded-xl border border-white/20 bg-white/85 p-2">
-                <img src={zabkaBarcode} alt="Zabka wallet barcode" className="h-full w-full object-contain" loading="lazy" />
+              <div className="mt-3 h-14 overflow-hidden rounded-xl border border-white/20 bg-white p-0">
+                <img src={zabkaBarcode} alt="Zabka wallet barcode" className="block h-full w-full object-fill" loading="lazy" />
               </div>
             ) : null}
           </div>
