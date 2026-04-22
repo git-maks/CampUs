@@ -33,6 +33,7 @@ import ubootLogo from '../assets/images/restaurants/u boot logo.jpeg';
 import kazikLogo from '../assets/images/restaurants/kazik logo.jpg';
 import ubootInside from '../assets/images/restaurants/uboot zdjecie srodek.jpg';
 import kazikInside from '../assets/images/restaurants/kazik zdjecie srodek.jpg';
+import libraryInside from '../assets/images/restaurants/jakas biblioteka.jpg';
 
 import peselGraphic from '../assets/images/beurocracy-assets/pesel grafika 2.jpg';
 import bankGraphic from '../assets/images/beurocracy-assets/konto w banku.jpg';
@@ -105,5 +106,6 @@ export const logisticsImageByKey = {
 
 export const socialEventImageById = {
   1: ubootInside,
+  2: libraryInside,
   3: kazikInside,
 };

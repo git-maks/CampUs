@@ -4,7 +4,9 @@ import MenuDrawer from '../components/MenuDrawer';
 import CustomScrollbar from '../components/CustomScrollbar';
 import necessitiesDocs from '../data/necessities.json';
 import calendarDocs from '../data/calendar.json';
+import userProfile from '../data/user-profile.json';
 import { necessityLogoById, necessityPromoById } from '../data/assetMaps';
+import zabkaBarcode from '../assets/images/store-and-vendors-assets/zabka-barcode.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTicket,
@@ -46,7 +48,7 @@ export default function MainDashboard() {
 
       <main className="page-main space-y-5">
         <section className="glass-panel p-4">
-          <p className="text-sm text-white/70">Hey Alex</p>
+          <p className="text-sm text-white/70">Hey {userProfile.name}</p>
           <h2 className="section-title flex items-center gap-2">
             <FontAwesomeIcon icon={faTicket} className="accent-text text-base" />
             Best Coupons
@@ -116,9 +118,9 @@ export default function MainDashboard() {
               </div>
             </div>
 
-            {necessityLogoById[1] ? (
+            {zabkaBarcode ? (
               <div className="mt-3 h-14 overflow-hidden rounded-xl border border-white/20 bg-white/85 p-2">
-                <img src={necessityLogoById[1]} alt="Zabka wallet logo" className="h-full w-full object-contain" loading="lazy" />
+                <img src={zabkaBarcode} alt="Zabka wallet barcode" className="h-full w-full object-contain" loading="lazy" />
               </div>
             ) : null}
           </div>

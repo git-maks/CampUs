@@ -35,7 +35,7 @@ export default function Housing() {
   const filteredHousing = filter === 'All' ? allListings : allListings.filter((d) => d.type === filter);
   const reservedApartment = housingData.find((listing) => listing.id === 1) ?? housingData[0] ?? roommateOption;
   const reservation = {
-    tenant: 'Alex Erasmus',
+    tenant: 'Marco Rossi',
     landlord: 'Lublin Student Rentals Sp. z o.o.',
     address: 'ul. Nadbystrzycka 38A, 20-618 Lublin',
     moveInDate: '01.09.2026',

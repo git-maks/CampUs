@@ -15,7 +15,7 @@ function App() {
 
   return (
     <Router basename={routerBase}>
-      <div className="min-h-screen pb-20">
+      <div className="min-h-screen">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<MainDashboard />} />

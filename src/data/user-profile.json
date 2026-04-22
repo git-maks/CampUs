@@ -1,13 +1,13 @@
 {
-  "name": "Alex",
-  "surname": "Erasmus",
+  "name": "Marco",
+  "surname": "Rossi",
   "language": "en",
   "currency_default": "PLN",
   "currency_secondary": "EUR",
   "exchange_rate": 4.31,
   "linked_wallets": [
     {
-      "vendor": "Żabka",
+      "vendor": "Zabka",
       "status": "Verified",
       "balance_points": 450
     }

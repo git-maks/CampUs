@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Zabka Studentska",
+    "name": "Zabka",
     "type": "Grocery",
     "discount": "10% off for students",
     "logo": "/src/assets/images/store-logos/zabka.jpg"

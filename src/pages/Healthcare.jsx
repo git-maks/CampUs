@@ -50,23 +50,14 @@ export default function Healthcare() {
                 </div>
               ) : null}
 
-              <div className="flex items-center gap-4">
-                {doctorImageById[doc.id] ? (
-                  <img
-                    src={doctorImageById[doc.id]}
-                    alt={`${doc.name} avatar`}
-                    className="h-16 w-16 rounded-full border border-white/30 object-cover"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-white/16 text-xl font-bold text-white backdrop-blur-xl">
-                    <FontAwesomeIcon icon={faStethoscope} className="text-xl" />
-                  </div>
-                )}
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/16 text-white backdrop-blur-xl">
+                  <FontAwesomeIcon icon={faStethoscope} className="text-sm" />
+                </div>
 
-                <div className="flex flex-col">
-                  <h3 className="text-xl font-semibold tracking-tight text-white">{doc.name}</h3>
-                  <p className="accent-text text-sm">{doc.specialty}</p>
+                <div className="flex min-w-0 flex-col">
+                  <h3 className="single-line text-xl font-semibold tracking-tight text-white">{doc.name}</h3>
+                  <p className="single-line accent-text text-sm">{doc.specialty}</p>
                 </div>
               </div>
 
