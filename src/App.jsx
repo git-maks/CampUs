@@ -9,6 +9,7 @@ import SocialCalendar from './pages/SocialCalendar';
 import Necessities from './pages/Necessities';
 import Logistics from './pages/Logistics';
 import ProfileSettings from './pages/ProfileSettings';
+import Chats from './pages/Chats';
 
 function App() {
   const routerBase = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/calendar" element={<SocialCalendar />} />
           <Route path="/necessities" element={<Necessities />} />
           <Route path="/logistics" element={<Logistics />} />
+          <Route path="/chats" element={<Chats />} />
           <Route path="/profile" element={<ProfileSettings />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { icon as toSvgIcon } from '@fortawesome/fontawesome-svg-core';
@@ -113,13 +114,21 @@ const userLocationIcon = L.divIcon({
   popupAnchor: [0, -13],
 });
 
-function MapInteractionHandler() {
+function MapInteractionHandler({ isFullscreen }) {
   const map = useMapEvents({
     click: () => {
+      if (isFullscreen) {
+        return;
+      }
+
       map.scrollWheelZoom.enable();
       if (map.dragging) map.dragging.enable();
     },
     mouseout: () => {
+      if (isFullscreen) {
+        return;
+      }
+
       map.scrollWheelZoom.disable();
       const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       if (isTouch && map.dragging) map.dragging.disable();
@@ -127,12 +136,21 @@ function MapInteractionHandler() {
   });
 
   useEffect(() => {
-    map.scrollWheelZoom.disable();
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (isFullscreen) {
+      map.scrollWheelZoom.enable();
+      if (map.dragging) {
+        map.dragging.enable();
+      }
+      return;
+    }
+
+    map.scrollWheelZoom.disable();
     if (isTouch && map.dragging) {
       map.dragging.disable();
     }
-  }, [map]);
+  }, [isFullscreen, map]);
 
   return null;
 }
@@ -322,7 +340,7 @@ export default function CampusMap() {
   const mapViewport = (mode) => (
     <div
       className={`campus-live-map relative overflow-hidden rounded-2xl border border-white/25 bg-[#edf4ff] ${
-        mode === 'fullscreen' ? 'h-[68vh] sm:h-[74vh]' : 'h-[360px] sm:h-[430px]'
+        mode === 'fullscreen' ? 'h-full' : 'h-[360px] sm:h-[430px]'
       }`}
     >
       <MapContainer
@@ -335,7 +353,7 @@ export default function CampusMap() {
         zoomControl={mode === 'fullscreen'}
         className="h-full w-full"
       >
-        <MapInteractionHandler />
+        <MapInteractionHandler isFullscreen={mode === 'fullscreen'} />
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; OpenStreetMap contributors &copy; CARTO'
@@ -404,19 +422,21 @@ export default function CampusMap() {
         </button>
       </div>
 
-      {isFilterOpen && <div className="mb-3">{layerPanel}</div>}
+      {!isFullscreen && isFilterOpen && <div className="mb-3">{layerPanel}</div>}
 
       {mapViewport('inline')}
 
-      {isFullscreen && (
-        <div className="fixed inset-0 z-[120] bg-[#edf3fb]/96 p-2 sm:p-4">
-          <div className="mx-auto h-full w-full max-w-6xl overflow-auto rounded-2xl border border-white/35 bg-[rgba(236,244,255,0.92)] p-3 shadow-[0_24px_48px_rgba(25,39,66,0.25)]">
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-              <div className="ml-auto flex items-center gap-2">
+      {isFullscreen &&
+        createPortal(
+          <div className="fixed inset-0 z-[220] bg-[#edf3fb]/98 p-2 sm:p-3">
+            <div className="relative h-full w-full">
+              {mapViewport('fullscreen')}
+
+              <div className="absolute right-2 top-2 z-[1600] flex items-center gap-2 sm:right-3 sm:top-3">
                 <button
                   type="button"
                   onClick={() => setIsFilterOpen((previousState) => !previousState)}
-                  className="inline-flex h-10 items-center gap-2 rounded-xl border border-white/28 bg-white/85 px-3 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-white"
+                  className="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-700/90 bg-slate-900/95 px-3 text-xs font-semibold text-slate-100 shadow-[0_10px_22px_rgba(8,18,38,0.45)] transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
                 >
                   <FontAwesomeIcon icon={faFilter} className="text-[0.68rem]" />
                   Filter
@@ -425,20 +445,22 @@ export default function CampusMap() {
                 <button
                   type="button"
                   onClick={() => setIsFullscreen(false)}
-                  className="inline-flex h-10 items-center gap-2 rounded-xl border border-white/28 bg-white/85 px-3 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-white"
+                  className="inline-flex h-10 items-center gap-2 rounded-xl border border-rose-800/85 bg-rose-700/95 px-3 text-xs font-semibold text-white shadow-[0_10px_22px_rgba(127,29,29,0.44)] transition hover:bg-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
                 >
                   <FontAwesomeIcon icon={faCompress} className="text-[0.68rem]" />
                   Close
                 </button>
               </div>
+
+              {isFilterOpen && (
+                <div className="absolute left-2 top-14 z-[1600] w-[min(88vw,280px)] sm:left-3 sm:top-[4.35rem]">
+                  {layerPanel}
+                </div>
+              )}
             </div>
-
-            {isFilterOpen && <div className="mb-3">{layerPanel}</div>}
-
-            {mapViewport('fullscreen')}
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </section>
   );
 }

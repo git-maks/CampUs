@@ -1,10 +1,12 @@
 import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import housingData from '../data/apartments.json';
 import { housingImageById } from '../data/assetMaps';
 import DualCurrency from '../components/DualCurrency';
 import CustomSelect from '../components/CustomSelect';
+import { getHousingThreadId } from '../data/chats';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBuilding,
@@ -23,11 +25,13 @@ import {
   faUserPlus,
   faCalendar,
   faGraduationCap,
+  faComments,
   faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Housing() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('All');
   const [genderFilter, setGenderFilter] = useState('all');
   const [hostAgeFilter, setHostAgeFilter] = useState('all');
@@ -429,6 +433,15 @@ export default function Housing() {
                   <div className="mt-4 border-t border-white/16 pt-4">
                     <DualCurrency pln={apt.price_pln} eur={apt.price_eur} />
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/chats?thread=${encodeURIComponent(getHousingThreadId(apt.id))}`)}
+                    className="ghost-pill mt-3 inline-flex w-full items-center justify-center gap-2 py-2 text-sm"
+                  >
+                    <FontAwesomeIcon icon={faComments} className="text-xs" />
+                    Chat with Host
+                  </button>
                 </article>
               );
               })}
@@ -494,6 +507,15 @@ export default function Housing() {
                 <p className="single-line"><span className="text-white/55">Move-in:</span> {reservation.moveInDate}</p>
                 <p className="single-line"><span className="text-white/55">Contract ends:</span> {reservation.contractEndDate}</p>
               </div>
+
+              <button
+                type="button"
+                onClick={() => navigate(`/chats?thread=${encodeURIComponent(getHousingThreadId(reservedApartment.id))}`)}
+                className="ghost-pill mt-4 inline-flex w-full items-center justify-center gap-2 py-2 text-sm"
+              >
+                <FontAwesomeIcon icon={faComments} className="text-xs" />
+                Chat with Landlord
+              </button>
             </article>
 
             <article className="glass-panel p-4">

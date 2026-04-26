@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import doctorsData from '../data/doctors.json';
 import { doctorImageById } from '../data/assetMaps';
+import { getDoctorThreadId } from '../data/chats';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeartPulse,
@@ -10,12 +12,13 @@ import {
   faPhone,
   faStethoscope,
   faGlobe,
-  faCalendarDays,
+  faComments,
   faLocationDot,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Healthcare() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="app-shell">
@@ -71,13 +74,17 @@ export default function Healthcare() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
-                <button className="ghost-pill py-2">
+                <button
+                  type="button"
+                  onClick={() => navigate(`/chats?thread=${encodeURIComponent(getDoctorThreadId(doc.id))}`)}
+                  className="ghost-pill py-2"
+                >
                   <span className="inline-flex items-center gap-2">
-                    <FontAwesomeIcon icon={faCalendarDays} />
-                    Book Demo Visit
+                    <FontAwesomeIcon icon={faComments} />
+                    Chat & Book Visit
                   </span>
                 </button>
-                <button className="primary-pill py-2">
+                <button type="button" className="primary-pill py-2">
                   <span className="inline-flex items-center gap-2">
                     <FontAwesomeIcon icon={faLocationDot} />
                     Open Directions

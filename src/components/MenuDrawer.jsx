@@ -9,6 +9,7 @@ import {
   faCalendarDays,
   faBasketShopping,
   faBus,
+  faComments,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,6 +22,7 @@ export default function MenuDrawer({ open, close }) {
     { to: '/calendar', title: 'Social Calendar', icon: faCalendarDays },
     { to: '/necessities', title: 'Necessities', icon: faBasketShopping },
     { to: '/logistics', title: 'Logistics', icon: faBus },
+    { to: '/chats', title: 'Chats', icon: faComments },
     { to: '/profile', title: 'Profile Settings', icon: faUser },
   ];
 

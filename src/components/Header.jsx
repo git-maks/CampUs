@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faComments } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header({ toggleMenu }) {
   const navigate = useNavigate();
@@ -24,11 +24,11 @@ export default function Header({ toggleMenu }) {
 
         <button
           type="button"
-          onClick={() => navigate('/profile')}
-          aria-label="Open profile settings"
+          onClick={() => navigate('/chats')}
+          aria-label="Open chats"
           className="accent-icon-wrap flex h-11 w-11 items-center justify-center rounded-2xl transition hover:brightness-110 active:scale-[0.98]"
         >
-          <FontAwesomeIcon icon={faUser} className="text-base" />
+          <FontAwesomeIcon icon={faComments} className="text-base" />
         </button>
       </div>
     </header>
