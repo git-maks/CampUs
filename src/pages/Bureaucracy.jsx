@@ -53,11 +53,13 @@ export default function Bureaucracy() {
                 </div>
               ) : null}
 
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white/85">
-                <FontAwesomeIcon icon={guide.icon} className="text-sm" />
+              <div className="flex items-center gap-3">
+                <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white/85">
+                  <FontAwesomeIcon icon={guide.icon} className="text-sm" />
+                </div>
+                <h3 className="text-[1.2rem] font-semibold leading-tight tracking-tight text-white">{guide.title}</h3>
               </div>
 
-              <h3 className="mt-3 text-[1.2rem] font-semibold leading-tight tracking-tight text-white">{guide.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/72">{guide.desc}</p>
 
               <button className="ghost-pill mt-4 px-4 py-2 text-sm">

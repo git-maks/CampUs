@@ -4,19 +4,53 @@ import MenuDrawer from '../components/MenuDrawer';
 import housingData from '../data/apartments.json';
 import { housingImageById } from '../data/assetMaps';
 import DualCurrency from '../components/DualCurrency';
+import CustomSelect from '../components/CustomSelect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBuilding, faHouse, faUserGroup, faImage, faCircleCheck, faFileLines, faLanguage, faClock } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBuilding,
+  faHouse,
+  faUserGroup,
+  faImage,
+  faCircleCheck,
+  faFileLines,
+  faLanguage,
+  faClock,
+  faMars,
+  faVenus,
+  faVenusMars,
+  faStar,
+  faUsers,
+  faUserPlus,
+  faCalendar,
+  faGraduationCap,
+  faChevronDown,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Housing() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [filter, setFilter] = useState('All');
+  const [genderFilter, setGenderFilter] = useState('all');
+  const [hostAgeFilter, setHostAgeFilter] = useState('all');
   const [activeTab, setActiveTab] = useState('listings');
   const [contractLanguage, setContractLanguage] = useState('pl');
   const [contractStatus, setContractStatus] = useState('pending');
   const [signatureDate, setSignatureDate] = useState('');
   const [signatureReference, setSignatureReference] = useState('');
 
-  const filters = ['All', 'Standalone', 'Group', 'Roommate'];
+  const filters = ['All', 'Standalone', 'Group', 'Roommate', 'Dorm', 'Hostel'];
+  const genderFilters = [
+    { id: 'all', label: 'Any', icon: faUserGroup },
+    { id: 'male', label: 'Men', icon: faMars },
+    { id: 'female', label: 'Women', icon: faVenus },
+    { id: 'mixed', label: 'Mixed', icon: faVenusMars },
+  ];
+  const hostAgeFilterOptions = [
+    { value: 'all', label: 'Any host age' },
+    { value: '18-20', label: '18-20 years' },
+    { value: '21-23', label: '21-23 years' },
+    { value: '24-26', label: '24-26 years' },
+    { value: '27+', label: '27+ years' },
+  ];
   const tabs = [
     { id: 'listings', label: 'Listings', icon: faBuilding },
     { id: 'my-home', label: 'My Home', icon: faHouse },
@@ -24,15 +58,62 @@ export default function Housing() {
 
   const roommateOption = {
     id: 'roommate-1',
-    title: 'Roommate Match - City Center Flat',
+    title: 'Roommate Post - City Center Flat',
     type: 'Roommate',
-    price_pln: 1200,
-    price_eur: 278,
+    price_pln: 1250,
+    price_eur: 289,
     verified: true,
-    description: 'Match with an Erasmus student sharing a 2-bedroom apartment close to LUT transit lines.',
+    spots_available: 2,
+    current_tenants: 2,
+    max_tenants: 4,
+    gender_preference: 'mixed',
+    host_age: 22,
+    host_is_student: true,
+    community_verifications: 29,
+    university_verifications: 12,
+    rating: 4.7,
+    rating_count: 24,
+    description: 'Julia and Anna are looking for two roommates in a 4-person flat close to LUT bus lines.',
+  };
+  const genderPreferenceMeta = {
+    male: { label: 'Men only', icon: faMars },
+    female: { label: 'Women only', icon: faVenus },
+    mixed: { label: 'Mixed', icon: faVenusMars },
   };
   const allListings = [...housingData, roommateOption];
-  const filteredHousing = filter === 'All' ? allListings : allListings.filter((d) => d.type === filter);
+
+  const matchesHostAgeFilter = (hostAgeValue) => {
+    if (hostAgeFilter === 'all') {
+      return true;
+    }
+
+    const parsedAge = Number(hostAgeValue);
+    if (!Number.isFinite(parsedAge)) {
+      return false;
+    }
+
+    switch (hostAgeFilter) {
+      case '18-20':
+        return parsedAge >= 18 && parsedAge <= 20;
+      case '21-23':
+        return parsedAge >= 21 && parsedAge <= 23;
+      case '24-26':
+        return parsedAge >= 24 && parsedAge <= 26;
+      case '27+':
+        return parsedAge >= 27;
+      default:
+        return true;
+    }
+  };
+
+  const filteredHousing = allListings.filter((listing) => {
+    const matchesType = filter === 'All' || listing.type === filter;
+    const listingGenderPreference = listing.gender_preference ?? 'mixed';
+    const matchesGender = genderFilter === 'all' || listingGenderPreference === genderFilter;
+    const matchesHostAge = matchesHostAgeFilter(listing.host_age);
+
+    return matchesType && matchesGender && matchesHostAge;
+  });
   const reservedApartment = housingData.find((listing) => listing.id === 1) ?? housingData[0] ?? roommateOption;
   const reservation = {
     tenant: 'Marco Rossi',
@@ -198,7 +279,7 @@ export default function Housing() {
           <FontAwesomeIcon icon={faBuilding} className="accent-text text-base" />
           Housing
         </h1>
-        <p className="section-subtitle">Verified listings for apartments, groups, and roommate matching.</p>
+        <p className="section-subtitle">Student board with clear ratings plus university verification for each host.</p>
 
         <div className="grid grid-cols-2 gap-2">
           {tabs.map((tab) => (
@@ -206,7 +287,7 @@ export default function Housing() {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id)}
-              className={`inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition ${
+              className={`inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition ${
                 activeTab === tab.id
                   ? 'border-[rgba(255,165,214,0.45)] bg-gradient-to-r from-[#d21f7a] to-[#86004a] text-white shadow-[0_12px_24px_rgba(173,1,95,0.34)]'
                   : 'border-white/18 bg-white/8 text-white/80 hover:bg-white/13'
@@ -225,7 +306,7 @@ export default function Housing() {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                  className={`rounded-full border px-4 py-2 text-xs font-semibold transition ${
                     filter === f
                       ? 'border-[rgba(255,165,214,0.45)] bg-gradient-to-r from-[#d21f7a] to-[#86004a] text-white shadow-[0_10px_22px_rgba(173,1,95,0.34)]'
                       : 'border-white/18 bg-white/8 text-white/80 hover:border-[rgba(255,165,214,0.35)] hover:bg-white/13'
@@ -236,9 +317,51 @@ export default function Housing() {
               ))}
             </div>
 
+            <div className="flex flex-wrap gap-4 pb-1">
+              <div className="space-y-2 w-full">
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/58">Roommate Preference & Host Age</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {genderFilters.map((option) => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => setGenderFilter(option.id)}
+                      className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold transition ${
+                        genderFilter === option.id
+                          ? 'border-[rgba(255,165,214,0.45)] bg-gradient-to-r from-[#d21f7a] to-[#86004a] text-white shadow-[0_10px_22px_rgba(173,1,95,0.34)]'
+                          : 'border-white/18 bg-white/8 text-white/80 hover:border-[rgba(255,165,214,0.35)] hover:bg-white/13'
+                      }`}
+                    >
+                      <FontAwesomeIcon icon={option.icon} className="text-[0.65rem]" />
+                      {option.label}
+                    </button>
+                  ))}
+                  <CustomSelect
+                    value={hostAgeFilter}
+                    onChange={setHostAgeFilter}
+                    options={hostAgeFilterOptions}
+                    placeholder="Any host age"
+                    variant="pill"
+                  />
+                </div>
+              </div>
+            </div>
+
             <div className="space-y-4">
               {filteredHousing.map((apt) => {
                 const listingImage = housingImageById[apt.id];
+                const listingGenderPreference = apt.gender_preference ?? 'mixed';
+                const genderMeta = genderPreferenceMeta[listingGenderPreference] ?? genderPreferenceMeta.mixed;
+                const availableSpots = Math.max(1, Number(apt.spots_available ?? 1));
+                const currentTenants = Math.max(0, Number(apt.current_tenants ?? 0));
+                const maxTenants = Math.max(availableSpots + currentTenants, Number(apt.max_tenants ?? availableSpots + currentTenants));
+                const hostAge = Number(apt.host_age);
+                const hasHostAge = Number.isFinite(hostAge) && hostAge > 0;
+                const universityVerifications = Math.max(0, Number(apt.university_verifications ?? 0));
+                const hostIsStudentVerified = Boolean(apt.host_is_student) && universityVerifications > 0;
+                const rating = Number(apt.rating ?? 0);
+                const ratingCount = Math.max(0, Number(apt.rating_count ?? 0));
+                const hasRating = Number.isFinite(rating) && rating > 0 && ratingCount > 0;
 
                 return (
                 <article key={apt.id} className="glass-panel p-4">
@@ -265,17 +388,43 @@ export default function Housing() {
                   <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <h3 className="single-line text-[1.35rem] font-semibold leading-tight tracking-tight text-white">{apt.title}</h3>
-                      <p className="single-line mt-1 text-sm text-white/68">{apt.type}</p>
+                      <p className="single-line mt-1 text-sm text-white/68">
+                        {availableSpots} spot{availableSpots === 1 ? '' : 's'} open | {apt.type}
+                        {hasHostAge ? ` | host ${hostAge} y/o` : ''}
+                      </p>
                     </div>
-                    {apt.verified && (
-                      <span className="accent-chip-soft inline-flex max-w-full items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold whitespace-nowrap">
-                        <FontAwesomeIcon icon={faCircleCheck} className="text-[0.62rem]" />
-                        Verified
-                      </span>
-                    )}
+                    <span className="inline-flex max-w-full items-center gap-1 rounded-full border border-[#ffd899]/50 bg-[#ffd899]/15 px-2 py-1 text-xs font-semibold whitespace-nowrap text-[#ffe9b8]">
+                      <FontAwesomeIcon icon={faStar} className="text-[0.62rem]" />
+                      {hasRating ? `${rating.toFixed(1)} (${ratingCount})` : 'New listing'}
+                    </span>
                   </div>
 
                   <p className="mt-3 text-sm leading-relaxed text-white/78">{apt.description}</p>
+
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                    <div className="flex items-center gap-1.5 rounded-xl border border-white/12 bg-white/5 px-2.5 py-1.5 text-white/80" title="Current tenants">
+                      <FontAwesomeIcon icon={faUsers} className="text-white/55 text-[0.7rem]" />
+                      <span>{currentTenants} current</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 rounded-xl border border-white/12 bg-white/5 px-2.5 py-1.5 text-white/80" title="Open spots">
+                      <FontAwesomeIcon icon={faUserPlus} className="text-white/55 text-[0.7rem]" />
+                      <span>{availableSpots} open</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 rounded-xl border border-white/12 bg-white/5 px-2.5 py-1.5 text-white/80" title="Preference">
+                      <FontAwesomeIcon icon={genderMeta.icon} className="text-white/55 text-[0.7rem]" />
+                      <span>{genderMeta.label}</span>
+                    </div>
+                    {hasHostAge && (
+                      <div className="flex items-center gap-1.5 rounded-xl border border-white/12 bg-white/5 px-2.5 py-1.5 text-white/80" title="Host age">
+                        <FontAwesomeIcon icon={faCalendar} className="text-white/55 text-[0.7rem]" />
+                        <span>{hostAge}y</span>
+                      </div>
+                    )}
+                    <div className={`flex items-center gap-1.5 rounded-xl border px-2.5 py-1.5 ${hostIsStudentVerified ? 'border-[rgba(255,165,214,0.32)] bg-[rgba(173,1,95,0.14)] text-[#ffc9e5]' : 'border-white/12 bg-white/5 text-white/80'}`} title="Host status">
+                      <FontAwesomeIcon icon={hostIsStudentVerified ? faGraduationCap : faClock} className={hostIsStudentVerified ? 'text-[0.7rem]' : 'text-white/55 text-[0.7rem]'} />
+                      <span>{hostIsStudentVerified ? `Verified student (${universityVerifications})` : 'Not verified'}</span>
+                    </div>
+                  </div>
 
                   <div className="mt-4 border-t border-white/16 pt-4">
                     <DualCurrency pln={apt.price_pln} eur={apt.price_eur} />
@@ -283,6 +432,12 @@ export default function Housing() {
                 </article>
               );
               })}
+
+              {filteredHousing.length === 0 && (
+                <article className="glass-panel p-4 text-sm text-white/75">
+                  No listings match the selected filters. Try another host age or roommate preference.
+                </article>
+              )}
             </div>
           </>
         ) : (

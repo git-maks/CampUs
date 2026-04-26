@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import MenuDrawer from '../components/MenuDrawer';
 import CustomScrollbar from '../components/CustomScrollbar';
+import CampusMap from '../components/CampusMap';
 import necessitiesDocs from '../data/necessities.json';
 import calendarDocs from '../data/calendar.json';
 import userProfile from '../data/user-profile.json';
@@ -47,6 +48,8 @@ export default function MainDashboard() {
       <MenuDrawer open={drawerOpen} close={() => setDrawerOpen(false)} />
 
       <main className="page-main space-y-5">
+        <CampusMap />
+
         <section className="glass-panel p-4">
           <p className="text-sm text-white/70">Hey {userProfile.name}</p>
           <h2 className="section-title flex items-center gap-2">
